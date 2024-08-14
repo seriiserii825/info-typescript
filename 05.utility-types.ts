@@ -44,4 +44,20 @@ const completed_tasks = getCompletedTasks([task]);
 completed_tasks[0].isCompleted;
 
 
+// Pick (select properties from object) ====================================
+type TUserSchema = {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+};
+
+// select only id and name
+type TPickUser = Pick<TUserSchema, "id" | "name">;
+
+// Omit (remove properties from object) ====================================
+// remove password from TUserSchema
+// Omit<TUserSchema, "password"> is same as Pick<TUserSchema, "id" | "name" | "email">
+type TOmitUser = Omit<TUserSchema, "password">;
+
 
