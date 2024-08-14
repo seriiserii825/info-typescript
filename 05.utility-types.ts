@@ -36,13 +36,14 @@ updateTask(task, { title: "Buy Milk and Bread" });
 
 // Required (make all properties required) ====================================
 function getCompletedTasks(tasks: TTask[]) {
-  return tasks.filter((task) => task.isCompleted && task.completedDate) as Required<TTask>[];
+  return tasks.filter(
+    (task) => task.isCompleted && task.completedDate
+  ) as Required<TTask>[];
 }
 
 const completed_tasks = getCompletedTasks([task]);
 // all properties are required
 completed_tasks[0].isCompleted;
-
 
 // Pick (select properties from object) ====================================
 type TUserSchema = {
@@ -60,4 +61,26 @@ type TPickUser = Pick<TUserSchema, "id" | "name">;
 // Omit<TUserSchema, "password"> is same as Pick<TUserSchema, "id" | "name" | "email">
 type TOmitUser = Omit<TUserSchema, "password">;
 
+// Record (create object with keys and values) ====================================
+type TObject = Record<string, string>;
+type TUser = Record<"id" | "name" | "email", string>;
 
+type ThemeParams = {
+  fontSize: string;
+  color: string;
+};
+
+type ThemeStyle = "light" | "dark";
+
+type Theme = Record<ThemeStyle, ThemeParams>;
+
+const theme: Theme = {
+  light: {
+    color: "white",
+    fontSize: "16px",
+  },
+  dark: {
+    color: "black",
+    fontSize: "16px",
+  },
+};
