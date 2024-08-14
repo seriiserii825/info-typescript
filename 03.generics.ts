@@ -79,3 +79,15 @@ function getProperty<T,K extends keyof T>(value: T, key: K): T[K]{
 
 const user5 = getProperty(user, 'name')
 const user6 = getProperty({title: 'hello'}, 'title')
+
+const users: User[] = [
+  {id: 1, name: 'John', age: 25},
+  {id: 2, name: 'Jane', age: 22},
+  {id: 3, name: 'Mary', age: 28},
+]
+
+function filterProperty<T, K extends keyof T>(items: T[], key: K, value: T[K]): T[]{
+  return items.filter(item => item[key] === value)
+}
+
+
