@@ -147,4 +147,12 @@ type TCreateTask = ReturnType<typeof createTask>;
 // Parameters (get parameters of function) ====================================
 type TCreateTaskParams = Parameters<typeof createTask>;
 
+// Awaited (get return type of promise) ====================================
+async function getTask() {
+  return createTask("Buy Milk");
+}
+
+type TGetTask = Awaited<ReturnType<typeof getTask>>;
+
+
 
