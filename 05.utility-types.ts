@@ -127,3 +127,19 @@ function getTaskDate(date: TTask3['isCompleted']): NonNullable<TTask3["isComplet
 
 const task_date = getTaskDate(null);
 
+// ReturnType (get return type of function) ====================================
+function getInt(n: string) {
+  return parseInt(n);
+}
+
+type TGetInt = ReturnType<typeof getInt>;
+
+function createTask(title: string) {
+  return {
+    id: Math.random(),
+    title,
+    isCompleted: false,
+  };
+}
+
+type TCreateTask = ReturnType<typeof createTask>;
