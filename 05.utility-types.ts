@@ -108,7 +108,22 @@ type TUser2 = {
 // get common properties from TUser1 and TUser2
 type TExt = Extract<keyof TUser1, keyof TUser2>
 
+// NonNullable (remove null and undefined from type) ====================================
+// remove null and undefined from string | null | undefined
+type TNonNullable = NonNullable<string | null | undefined>;
 
+type TTask3 = {
+  id: number;
+  title: string;
+  isCompleted: Date | null;
+};
 
+function getTaskDate(date: TTask3['isCompleted']): NonNullable<TTask3["isCompleted"]> {
+  if (!date) {
+    return new Date();
+  }
+  return date;
+}
 
+const task_date = getTaskDate(null);
 
