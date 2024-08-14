@@ -33,3 +33,15 @@ function updateTask(task: TTask, updates: TPartialTask): TTask {
 
 // can use just keys from TTask
 updateTask(task, { title: "Buy Milk and Bread" });
+
+// Required (make all properties required) ====================================
+function getCompletedTasks(tasks: TTask[]) {
+  return tasks.filter((task) => task.isCompleted && task.completedDate) as Required<TTask>[];
+}
+
+const completed_tasks = getCompletedTasks([task]);
+// all properties are required
+completed_tasks[0].isCompleted;
+
+
+
