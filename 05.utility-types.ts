@@ -143,3 +143,8 @@ function createTask(title: string) {
 }
 
 type TCreateTask = ReturnType<typeof createTask>;
+
+// Parameters (get parameters of function) ====================================
+type TCreateTaskParams = Parameters<typeof createTask>;
+
+
