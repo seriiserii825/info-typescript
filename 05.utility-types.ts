@@ -84,3 +84,31 @@ const theme: Theme = {
     fontSize: "16px",
   },
 };
+
+// Exclude (remove types from union) ====================================
+type TStatus = "active" | "inactive" | "pending";
+type TActiveStatus = Exclude<TStatus, "inactive" | "pending">;
+
+// Extract (extract types from union) ====================================
+// same as Exclude but opposite, only get the type that is passed
+type TActiveStatus2 = Extract<TStatus, "active">;
+
+type TUser1 = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+type TUser2 = {
+  id: number;
+  name: string;
+  password: string;
+};
+
+// get common properties from TUser1 and TUser2
+type TExt = Extract<keyof TUser1, keyof TUser2>
+
+
+
+
+
