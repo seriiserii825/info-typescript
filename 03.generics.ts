@@ -90,4 +90,7 @@ function filterProperty<T, K extends keyof T>(items: T[], key: K, value: T[K]): 
   return items.filter(item => item[key] === value)
 }
 
+const user7 = filterProperty(users, 'age', 25);
+
+
 
