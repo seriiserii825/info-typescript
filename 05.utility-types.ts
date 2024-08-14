@@ -106,7 +106,7 @@ type TUser2 = {
 };
 
 // get common properties from TUser1 and TUser2
-type TExt = Extract<keyof TUser1, keyof TUser2>
+type TExt = Extract<keyof TUser1, keyof TUser2>;
 
 // NonNullable (remove null and undefined from type) ====================================
 // remove null and undefined from string | null | undefined
@@ -118,7 +118,9 @@ type TTask3 = {
   isCompleted: Date | null;
 };
 
-function getTaskDate(date: TTask3['isCompleted']): NonNullable<TTask3["isCompleted"]> {
+function getTaskDate(
+  date: TTask3["isCompleted"]
+): NonNullable<TTask3["isCompleted"]> {
   if (!date) {
     return new Date();
   }
@@ -139,10 +141,16 @@ function createTask(title: string) {
     id: Math.random(),
     title,
     isCompleted: false,
+    time: "12:00",
   };
 }
 
 type TCreateTask = ReturnType<typeof createTask>;
+
+function showTask(task: TCreateTask) {
+  console.log(task.title, "task.title");
+  console.log(task.time, "task.time");
+}
 
 // Parameters (get parameters of function) ====================================
 type TCreateTaskParams = Parameters<typeof createTask>;
@@ -153,6 +161,3 @@ async function getTask() {
 }
 
 type TGetTask = Awaited<ReturnType<typeof getTask>>;
-
-
-
