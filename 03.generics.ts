@@ -60,3 +60,22 @@ const r2 = len("hello");
 const r3 = len(3); // error
 
 
+// key of ====================================================
+type User = {
+  id: number;
+  name: string;
+  age: number;
+};
+
+const user: User = {
+  id: 1,
+  name: "John",
+  age: 25,
+};
+
+function getProperty<T,K extends keyof T>(value: T, key: K): T[K]{
+  return value[key];
+}
+
+const user5 = getProperty(user, 'name')
+const user6 = getProperty({title: 'hello'}, 'title')
