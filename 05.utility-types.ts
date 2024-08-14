@@ -161,3 +161,13 @@ async function getTask() {
 }
 
 type TGetTask = Awaited<ReturnType<typeof getTask>>;
+
+async function getUser(): Promise<{id: number, title: string}>{
+  return {
+    id: 1,
+    title: "Buy Milk"
+  }
+}
+
+type TUserType = Awaited<ReturnType<typeof getUser>>;
+
